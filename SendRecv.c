@@ -14,11 +14,8 @@ int main (int argc, char *argv[]){
     } else if (rank == 1) {
         printf("Number = %d\n", number);
         MPI_Recv(&number, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    /* get number of processes */
-    MPI_Comm_size (MPI_COMM_WORLD, &size);
-    /* print the rank and number of processes */
-    printf("Hello world from process %d of %d\n", rank, size );
-    /* ends MPI */
-    MPI_Finalize();
+        printf("Process 1 received data from process 0, number = %d\n", number);
+    }
+    MPI_Finalize(); /* ends MPI */
     return 0;
 }
